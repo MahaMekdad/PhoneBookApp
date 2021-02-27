@@ -85,11 +85,13 @@ function drawContact(contact) {
 }
 
 function t(contactPhone){
+    console.log("inside tttttttt");
     //debugger
     //window.location.href = "try.html";
     var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
     //document.getElementById("contactName").value = foundContact.name;
     //$('#contactName').innerHTML = foundContact.name;
+    console.log(foundContact.name);
     $('#contactName').html(foundContact.name)
     //var contactInfoDiv = document.getElementById('contactInfo');
     var img = document.createElement("img");
@@ -140,7 +142,7 @@ function editContact(contactPhone, cname, cphone, cemail){
     foundContact.email = cemail;
     foundContact.name = cname;
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
-    window.location.href = "try.html";
+    window.location.href = `try.html?x=${contactPhone}`;
 }
 
 function getContactInfo(contactPhone){
