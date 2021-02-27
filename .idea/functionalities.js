@@ -104,11 +104,13 @@ function t(contactPhone){
     deleteBtn.value = "delete";
     deleteBtn.setAttribute("onclick", `deleteContact(${foundContact.phone})`)
     var editBtn = document.createElement("input");
+    editBtn.setAttribute("class", "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b")
     editBtn.type = "button";
     editBtn.name = "edit";
     editBtn.value = "edit";
     editBtn.setAttribute("onclick", `editContact(${foundContact})`)
     var callBtn = document.createElement("input");
+    callBtn.setAttribute("class", "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b")
     callBtn.type = "button";
     callBtn.name = "call";
     callBtn.value = "call";
@@ -129,4 +131,14 @@ function deleteContact(contactPhone){
     contactsArray.splice(contactIndex, 1);
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
     window.location.href = "Test.html";
+}
+
+function editContact(contactPhone, cname, cphone, cemail){
+    debugger
+    var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
+    foundContact.phone = cphone;
+    foundContact.email = cemail;
+    foundContact.name = cname;
+    window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
+    //window.location.href = "Test.html";
 }
