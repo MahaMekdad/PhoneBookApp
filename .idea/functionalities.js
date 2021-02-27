@@ -64,6 +64,7 @@ function drawContact(contact) {
     var img = document.createElement("img");
     if (contact.gender == "male") {
         img.setAttribute("src", "male.png");
+
     } else {
         img.setAttribute("src", "female.png");
     }
@@ -97,8 +98,12 @@ function t(contactPhone){
     var img = document.createElement("img");
     if (foundContact.gender == "male") {
         img.setAttribute("src", "male.png");
+        img.setAttribute("width" ,"130px")
+        img.setAttribute("hight" ,"130px")
     } else {
         img.setAttribute("src", "female.png");
+        img.setAttribute("width" ,"130px")
+        img.setAttribute("hight" ,"130px")
     }
 
     $('#contactInfo').append(img);
