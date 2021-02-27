@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>addTest</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="functionalities.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#registration").validate({
+                rules: {
+                    name: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true,
+                        phone: true,
+                        // minlength: 11,
+                        // maxLength: 11
+                    }
+                },
+
+            });
+        });
+        $.validator.addMethod("phone", function( phone_number, element ) {
+            return phone_number.match("^(\\+2)?01\\d{9}$")
+        }, "Please enter a valid format 01XXXXXXXXX" );
+    </script>
+</head>
+<body>
+    <section data-role="page" id=“secondPage”>
+        <header data-role="header">
+            <h1>New Contact</h1>
+            <a href="Test.html" data-icon="back" data-role="button" data-add-back-btn="true">Back</a>
+        </header>
+
+        <div data-inset="true">
+            <form action="#" name="registration" id="registration" data-inset="true">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name"><br>
+
+                <label for="phone">Phone</label>
+                <input type="number" name="phone" id="phone"><br>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email"><br>
+
+                <label>Gender</label>
+
+<!--                <label>-->
+<!--                    <input type="radio" name="male" id="male">Male-->
+<!--                </label>-->
+<!--                <label for="female">Female</label>-->
+<!--                <input type="radio" name="female" id="female">-->
+
+<!--                <label for="male">Male</label>-->
+<!--                <input type="radio" name="male" id="male" checked="true">-->
+<!--                <label for="female">Female</label>-->
+<!--                <input type="radio" name="female" id="female" class="custom">-->
+
+                <label>
+                <input type="radio" name="male" id="male">Male<br>
+                </label>
+                <label>
+                <input type="radio" name="female" id="female">Female
+                </label>
+
+                <input name="submit" type="submit" id="submit" value="Add" onclick="addContact()">
+                <input name="cancel" type="reset" id="cancel" class="ui-helper-reset" value="Cancel">
+            </form>
+        </div>
+    </section>
+</body>
+</html>
