@@ -140,5 +140,10 @@ function editContact(contactPhone, cname, cphone, cemail){
     foundContact.email = cemail;
     foundContact.name = cname;
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
-    //window.location.href = "Test.html";
+    window.location.href = "try.html";
+}
+
+function getContactInfo(contactPhone){
+    var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
+    return foundContact;
 }
