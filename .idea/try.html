@@ -6,6 +6,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="../themes/customdesign2.min.css" />
     <script src="functionalities.js"></script>
 </head>
 <body>
@@ -47,16 +48,20 @@
                 <input type="number" name="phone" id="phone" value="" placeholder="phone" data-theme="a" required>
                 <label for="pw" class="ui-hidden-accessible">Email:</label>
                 <input type="email" name="email" id="email" value="" placeholder="email" data-theme="a" required>
-<!--                <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"-->
-<!--                   data-transition="flow" data-rel="back" onclick="editContact(getParameterByName('x', urlString),-->
-<!--                        $(contactName).val(), $(phone).val(), $(email).val())">Edit</a>-->
                 <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"
                         onclick="editContact(getParameterByName('x', urlString),
                         $(contactName).val(), $(phone).val(), $(email).val())">
                     Edit
                 </button>
             </div>
+
         </form>
+
+    </div>
+    <div data-role="controlgroup" data-type="horizontal">
+
+        <a href="tel:3615 0215" data-icon="phone" data-role="button">
+           </a>
     </div>
 </section>
 <script>

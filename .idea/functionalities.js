@@ -69,17 +69,17 @@ function drawContact(contact) {
     }
     var label = document.createElement("label");
     label.innerHTML = contact.name;
-
-    var btn = document.createElement("input");
-    btn.type = "button";
-    btn.name = "call";
-    btn.value = "call";
-    btn.onclick = function moveToTest2() {
-        window.location.href = "Test2.html";
-    };
+    var div = document.createElement("div");
+    div.setAttribute("data-role" ,"controlgroup");
+    div.setAttribute("data-type" ,"horizontal");
+    var a2 = document.createElement("a");
+    a2.setAttribute("href" ,"tel:3615 0215");
+    a2.setAttribute("data-icon" ,"phone");
+    a2.setAttribute("data-role" ,"button");
+    div.appendChild(a2);
     a.appendChild(img);
     a.appendChild(label);
-    a.appendChild(btn);
+    a.appendChild(div);
     li.appendChild(a);
     $('#contactlist').append(li);
 }
@@ -100,23 +100,8 @@ function t(contactPhone){
     } else {
         img.setAttribute("src", "female.png");
     }
-    var deleteBtn = document.createElement("input");
-    deleteBtn.type = "button";
-    deleteBtn.name = "delete";
-    deleteBtn.value = "delete";
-    deleteBtn.setAttribute("onclick", `deleteContact(${foundContact.phone})`)
-    var editBtn = document.createElement("input");
-    editBtn.setAttribute("class", "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b")
-    editBtn.type = "button";
-    editBtn.name = "edit";
-    editBtn.value = "edit";
-    editBtn.setAttribute("onclick", `editContact(${foundContact})`)
-    var callBtn = document.createElement("input");
-    callBtn.setAttribute("class", "ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b")
-    callBtn.type = "button";
-    callBtn.name = "call";
-    callBtn.value = "call";
-    $('#contactInfo').append(img, deleteBtn, editBtn, callBtn);
+
+    $('#contactInfo').append(img);
 }
 
 function getParameterByName(name, url = window.location.href) {
