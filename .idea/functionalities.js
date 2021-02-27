@@ -1,4 +1,5 @@
 var contactsArray = window.localStorage.getItem("contacts") ? JSON.parse(window.localStorage.getItem("contacts")) : [];
+var userPhone;
 
 function addContact() {
     var flag = false;
@@ -53,12 +54,12 @@ function loadContacts() {
 }
 
 function drawContact(contact) {
-    debugger
+    //debugger
     //console.log(contact.name + " , " + contact.phone + " inside draw")
     var li = document.createElement("li");
     var a = document.createElement("a");
-    a.setAttribute("href", "try.html");
-    //a.setAttribute("onclick", "t(contact.phone)")
+    a.setAttribute("href", `try.html?${contact.phone}`);
+    //a.setAttribute("onclick", `t(${contact.phone})`)
     var img = document.createElement("img");
     if (contact.gender == "male") {
         img.setAttribute("src", "male.png");
@@ -83,13 +84,15 @@ function drawContact(contact) {
 }
 
 function t(contactPhone){
+    //debugger
+    //window.location.href = "try.html";
     var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
     //document.getElementById("contactName").value = foundContact.name;
     //$('#contactName').innerHTML = foundContact.name;
     $('#contactName').html(foundContact.name)
     //var contactInfoDiv = document.getElementById('contactInfo');
     var img = document.createElement("img");
-    if (contact.gender == "male") {
+    if (foundContact.gender == "male") {
         img.setAttribute("src", "male.png");
     } else {
         img.setAttribute("src", "female.png");
@@ -98,12 +101,12 @@ function t(contactPhone){
     deleteBtn.type = "button";
     deleteBtn.name = "delete";
     deleteBtn.value = "delete";
-    deleteBtn.setAttribute("onclick", "deleteContact(foundContact.phone)")
+    deleteBtn.setAttribute("onclick", `deleteContact(${foundContact.phone})`)
     var editBtn = document.createElement("input");
     editBtn.type = "button";
     editBtn.name = "edit";
     editBtn.value = "edit";
-    editBtn.setAttribute("onclick", "editContact(foundContact)")
+    editBtn.setAttribute("onclick", `editContact(${foundContact})`)
     var callBtn = document.createElement("input");
     callBtn.type = "button";
     callBtn.name = "call";
