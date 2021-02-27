@@ -2,6 +2,11 @@ var contactsArray = window.localStorage.getItem("contacts") ? JSON.parse(window.
 var userPhone;
 
 function addContact() {
+    if(document.getElementById('name').value==" "|| document.getElementById('phone').value ==" " || document.getElementById('email').value ==" ")
+    {
+        return;
+    }
+
     var flag = false;
     //debugger
     console.log("inside the add Contact");
@@ -10,7 +15,7 @@ function addContact() {
             flag = true
             alert("phone number already exists")
             clearFields();
-            window.location.href = "Test2.html";
+            window.location.href = "AddContact.html";
             console.log("after the redirect")
         }
     })
@@ -32,7 +37,7 @@ function addContact2() {
     contactsArray.push(contactObj);
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
     clearFields();
-    window.location.href = "Test.html";
+    window.location.href = "MainPage.html";
 }
 
 function clearFields() {
@@ -58,15 +63,15 @@ function drawContact(contact) {
     //console.log(contact.name + " , " + contact.phone + " inside draw")
     var li = document.createElement("li");
     var a = document.createElement("a");
-    a.setAttribute("href", `try.html?x=${contact.phone}`);
+    a.setAttribute("href", `ContactProfile.html?x=${contact.phone}`);
     a.setAttribute("target", "_self" );
     //a.setAttribute("onclick", `t(${contact.phone})`)
     var img = document.createElement("img");
     if (contact.gender == "male") {
-        img.setAttribute("src", "male.png");
+        img.setAttribute("src", "../Images/male.png");
 
     } else {
-        img.setAttribute("src", "female.png");
+        img.setAttribute("src", "../Images/female.png");
     }
     var label = document.createElement("label");
     label.innerHTML = contact.name;
@@ -74,7 +79,7 @@ function drawContact(contact) {
     div.setAttribute("data-role" ,"controlgroup");
     div.setAttribute("data-type" ,"horizontal");
     var a2 = document.createElement("a");
-    a2.setAttribute("href" ,"tel:3615 0215");
+    a2.setAttribute("href" ,`tel:${contact.phone}`);
     a2.setAttribute("data-icon" ,"phone");
     a2.setAttribute("data-role" ,"button");
     div.appendChild(a2);
@@ -88,20 +93,20 @@ function drawContact(contact) {
 function t(contactPhone){
     console.log("inside tttttttt");
     //debugger
-    //window.location.href = "try.html";
+    //window.location.href = "ContactProfile.html";
     var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
     //document.getElementById("contactName").value = foundContact.name;
     //$('#contactName').innerHTML = foundContact.name;
     console.log(foundContact.name);
-    $('#contactName').html(foundContact.name)
+    $('#contactNameHeader').html(foundContact.name)
     //var contactInfoDiv = document.getElementById('contactInfo');
     var img = document.createElement("img");
     if (foundContact.gender == "male") {
-        img.setAttribute("src", "male.png");
+        img.setAttribute("src", "../Images/male.png");
         img.setAttribute("width" ,"130px")
         img.setAttribute("hight" ,"130px")
     } else {
-        img.setAttribute("src", "female.png");
+        img.setAttribute("src", "../Images/female.png");
         img.setAttribute("width" ,"130px")
         img.setAttribute("hight" ,"130px")
     }
@@ -122,17 +127,17 @@ function deleteContact(contactPhone){
     var contactIndex = contactsArray.findIndex(contact => contact.phone == contactPhone)
     contactsArray.splice(contactIndex, 1);
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
-    window.location.href = "Test.html";
+    window.location.href = "MainPage.html";
 }
 
 function editContact(contactPhone, cname, cphone, cemail){
-    debugger
+
     var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
     foundContact.phone = cphone;
     foundContact.email = cemail;
     foundContact.name = cname;
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
-    window.location.href = `try.html?x=${contactPhone}`;
+    window.location.href = `ContactProfile.html?x=${cphone}`;
 }
 
 function getContactInfo(contactPhone){

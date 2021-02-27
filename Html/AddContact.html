@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="../themes/customdesign2.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="functionalities.js"></script>
+    <script src="../Js/functionalities.js"></script>
     <script>
         $(document).ready(function(){
             $("#registration").validate({
@@ -37,33 +37,21 @@
     <section data-role="page" id=“secondPage”>
         <header data-role="header">
             <h1>New Contact</h1>
-            <a href="Test.html" data-icon="back" data-role="button" data-add-back-btn="true">Back</a>
+            <a href="MainPage.html" data-icon="back" data-role="button" data-add-back-btn="true">Back</a>
         </header>
 
         <div data-inset="true">
-            <form action="#" name="registration" id="registration" data-inset="true">
+            <form action="#" name="registration" id="registration" data-inset="true" onsubmit="addContact()">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name"><br>
+                <input type="text" name="name" id="name" required><br>
 
                 <label for="phone">Phone</label>
-                <input type="number" name="phone" id="phone"><br>
+                <input type="number" name="phone" id="phone" required><br>
 
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email"><br>
+                <input type="email" name="email" id="email" required><br>
 
                 <label>Gender</label>
-
-<!--                <label>-->
-<!--                    <input type="radio" name="male" id="male">Male-->
-<!--                </label>-->
-<!--                <label for="female">Female</label>-->
-<!--                <input type="radio" name="female" id="female">-->
-
-<!--                <label for="male">Male</label>-->
-<!--                <input type="radio" name="male" id="male" checked="true">-->
-<!--                <label for="female">Female</label>-->
-<!--                <input type="radio" name="female" id="female" class="custom">-->
-
                 <label>
                 <input type="radio" name="male" id="male">Male<br>
                 </label>
@@ -71,7 +59,7 @@
                 <input type="radio" name="female" id="female">Female
                 </label>
 
-                <input name="submit" type="submit" id="submit" value="Add" onclick="addContact()">
+                <input name="submit" type="submit" id="submit" value="Add">
                 <input name="cancel" type="reset" id="cancel" class="ui-helper-reset" value="Cancel">
             </form>
         </div>

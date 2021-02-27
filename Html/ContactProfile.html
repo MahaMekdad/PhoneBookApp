@@ -7,7 +7,7 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../themes/customdesign2.min.css" />
-    <script src="functionalities.js"></script>
+    <script src="../Js/functionalities.js"></script>
     <style>
     .picdiv {
     display: block;
@@ -20,8 +20,8 @@
 <body>
 <section data-role="page" id=“thirdPage”>
     <header data-role="header">
-        <h1 id="contactName"></h1>
-        <a href="Test.html" data-icon="back" data-role="button" data-add-back-btn="true">Back</a>
+        <h1 id="contactNameHeader"></h1>
+        <a href="MainPage.html" data-icon="back" data-role="button" data-add-back-btn="true">Back</a>
     </header>
     <div id="contactInfo"style="margin:0px">
     </div>
@@ -44,21 +44,21 @@
     </div>
 
     <a href="#popupLogin" data-rel="popup" data-position-to="window"
-       class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a"
+       class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-edit ui-btn-icon-left ui-btn-a"
        data-transition="pop">Edit</a>
     <div data-role="popup" id="popupLogin" data-theme="a" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">
         <form>
             <div style="padding:10px 20px;">
                 <h3>Edit the below info</h3>
-                <label for="un" class="ui-hidden-accessible">Name:</label>
+                <label for="contactName" class="ui-hidden-accessible">Name:</label>
                 <input type="text" name="name" id="contactName" value="" placeholder="name" data-theme="a">
-                <label for="pw" class="ui-hidden-accessible">Phone:</label>
-                <input type="number" name="phone" id="phone" value="" placeholder="phone" data-theme="a" required>
-                <label for="pw" class="ui-hidden-accessible">Email:</label>
-                <input type="email" name="email" id="email" value="" placeholder="email" data-theme="a" required>
-                <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check"
+                <label for="Contactphone" class="ui-hidden-accessible">Phone:</label>
+                <input type="number" name="phone" id="Contactphone" value="" placeholder="phone" data-theme="a" required>
+                <label for="contactemail" class="ui-hidden-accessible">Email:</label>
+                <input type="email" name="email" id="contactemail" value="" placeholder="email" data-theme="a" required>
+                <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-edit"
                         onclick="editContact(getParameterByName('x', urlString),
-                        $(contactName).val(), $(phone).val(), $(email).val())">
+                        $(contactName).val(), $(Contactphone).val(), $(contactemail).val())">
                     Edit
                 </button>
             </div>
@@ -66,11 +66,10 @@
         </form>
 
     </div>
-    <div data-role="controlgroup" data-type="horizontal">
-
-        <a href="tel:3615 0215" data-icon="phone" data-role="button">
-           </a>
-    </div>
+<!--    <div data-role="controlgroup" data-type="horizontal">-->
+        <a href="tel:3615 0215"   class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-phone ui-btn-icon-left ui-btn-a"  data-icon="phone" data-role="button"  data-role="controlgroup" data-type="horizontal">
+          Call </a>
+<!--    </div>-->
 </section>
 <script>
     var urlString = window.location.href
@@ -79,8 +78,8 @@
     t(s)
     var contactInfo = getContactInfo(s);
     $(contactName).val(contactInfo.name)
-    $(phone).val(contactInfo.phone)
-    $(email).val(contactInfo.email)
+    $(Contactphone).val(contactInfo.phone)
+    $(contactemail).val(contactInfo.email)
 </script>
 </body>
 
