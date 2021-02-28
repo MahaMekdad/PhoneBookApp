@@ -1,15 +1,14 @@
 var contactsArray = window.localStorage.getItem("contacts") ? JSON.parse(window.localStorage.getItem("contacts")) : [];
-var userPhone;
+
 
 function addContact() {
     if(document.getElementById('name').value==" "|| document.getElementById('phone').value ==" " || document.getElementById('email').value ==" ")
     {
         return;
     }
-
     var flag = false;
     //debugger
-    console.log("inside the add Contact");
+    //console.log("inside the add Contact");
     contactsArray.forEach(contact => {
         if (contact.phone == document.getElementById('phone').value) {
             flag = true
@@ -20,12 +19,12 @@ function addContact() {
         }
     })
     if (flag == false) {
-        addContact2()
+        addContactToStorage()
     }
     flag = false;
 }
 
-function addContact2() {
+function addContactToStorage() {
     var contactObj = {
         name: document.getElementById('name').value,
         phone: document.getElementById('phone').value,
@@ -51,19 +50,14 @@ function clearFields() {
 function loadContacts() {
     //debugger
     contactsArray = window.localStorage.getItem("contacts") ? JSON.parse(window.localStorage.getItem("contacts")) : [];
-    //console.log(contactsArray + " <--")
-    //contactsArray.forEach(contact => console.log(contact.name + " , " + contact.phone))
     contactsArray.forEach(contact => drawContact(contact))
-
-
 }
 
 function drawContact(contact) {
     //debugger
-    //console.log(contact.name + " , " + contact.phone + " inside draw")
     var li = document.createElement("li");
     var a = document.createElement("a");
-    a.setAttribute("href", `ContactProfile.html?x=${contact.phone}`);
+    a.setAttribute("href", `ContactProfile.html?id=${contact.phone}`);
     a.setAttribute("target", "_self" );
     //a.setAttribute("onclick", `t(${contact.phone})`)
     var img = document.createElement("img");
@@ -90,13 +84,9 @@ function drawContact(contact) {
     $('#contactlist').append(li);
 }
 
-function t(contactPhone){
-    console.log("inside tttttttt");
+function addContactInfoToProfile(contactPhone){
     //debugger
-    //window.location.href = "ContactProfile.html";
     var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
-    //document.getElementById("contactName").value = foundContact.name;
-    //$('#contactName').innerHTML = foundContact.name;
     console.log(foundContact.name);
     $('#contactNameHeader').html(foundContact.name)
     //var contactInfoDiv = document.getElementById('contactInfo');
@@ -110,10 +100,10 @@ function t(contactPhone){
         img.setAttribute("width" ,"130px")
         img.setAttribute("hight" ,"130px")
     }
-
     $('#contactInfo').append(img);
 }
 
+// outside resource
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -137,10 +127,9 @@ function editContact(contactPhone, cname, cphone, cemail){
     foundContact.email = cemail;
     foundContact.name = cname;
     window.localStorage.setItem("contacts", JSON.stringify(contactsArray));
-    window.location.href = `ContactProfile.html?x=${cphone}`;
+    window.location.href = `ContactProfile.html?id=${cphone}`;
 }
 
 function getContactInfo(contactPhone){
-    var foundContact = contactsArray.find(contact => contact.phone == contactPhone)
-    return foundContact;
+    return contactsArray.find(contact => contact.phone == contactPhone)
 }

@@ -5,31 +5,31 @@
     <title>Test</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="../themes/customdesign2.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="../themes/customdesign2.min.css"/>
 
     <script src="../Js/functionalities.js"></script>
 
 </head>
 <body>
-<section data-role=“page“  id="firstPage" data-theme=”a”>
-    <header data-role="header">
-        <h1>Contact List</h1>
-        <a href="AddContact.html" data-icon="plus" data-transition=“flip”>Add</a>
-    </header>
+    <section data-role=“page“ id="mainPage" data-theme=”a”>
+        <header data-role="header">
+            <h1>Contact List</h1>
+            <a href="AddContact.html" data-icon="plus" data-transition=“flip”>Add</a>
+        </header>
 
-    <article data-role="content">
-        <ul data-role="listview" data-inset="true" id="contactlist" >
+        <article data-role="content">
+            <ul data-role="listview" data-inset="true" id="contactlist">
 
-        </ul>
-    </article>
+            </ul>
+        </article>
 
-    <footer data-role="footer">
-        <h1>2021 S&M</h1>
-    </footer>
-</section>
-<script>
-  loadContacts();
-</script>
+        <footer data-role="footer">
+            <h1>2021 S&M</h1>
+        </footer>
+    </section>
+    <script>
+        loadContacts();
+    </script>
 </body>
 </html>
